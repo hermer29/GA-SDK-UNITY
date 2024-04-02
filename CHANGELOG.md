@@ -1,6 +1,16 @@
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**7.9.0**
+* added the iOS Privacy Manifest
+* fixed app boot time measurement for Android & iOS
+
+**7.8.0**
+* added optional session performance metrics collection
+* added optional app boot-time metric collection
+* fixed a warning when submitting FPS before initializing the SDK
+* added ad event support for webgl
+
 **7.8.0-beta**
 * beta versionadded optional session performance metrics collection
 * added optional app boot-time metric collection
