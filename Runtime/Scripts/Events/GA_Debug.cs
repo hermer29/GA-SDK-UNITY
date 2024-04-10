@@ -59,11 +59,11 @@ namespace GameAnalyticsSDK.Events
                     _message = _message.Substring (0, 8191);
                 }
 
-                GA_Error.NewEvent(_message, UnityToGAErrorSeverity(type), ValuableInformation.Extract());
+                GA_Error.NewEvent(_message, UnityToGAErrorSeverity(type), ValuableInformation.Extract(), false);
             }
         }
 
-        private static GAErrorSeverity UnityToGAErrorSeverity(LogType logType)
+        private static GAErrorSeverity UnityToGAErrorSeverity(LogType type)
         {
             GAErrorSeverity severity = GAErrorSeverity.Info;
 
