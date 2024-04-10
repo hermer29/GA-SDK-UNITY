@@ -53,13 +53,12 @@ namespace GameAnalyticsSDK.Events
 
                 string lString = logString.Replace('"', '\'').Replace('\n', ' ').Replace('\r', ' ');
                 string sTrace = stackTrace.Replace('"', '\'').Replace('\n', ' ').Replace('\r', ' ');
-                string valuableInformation = ValuableInformation.Extract().Replace('"', '\'').Replace('\n', ' ').Replace('\r', ' ');
-                string _message = lString + " " + sTrace + " " + valuableInformation;
+                string _message = lString + " " + sTrace;
                 if (_message.Length > 8192) {
                     _message = _message.Substring (0, 8191);
                 }
 
-                SubmitError(_message, type);
+                SubmitError(_message, type, ValuableInformation.Extract());
             }
         }
 
