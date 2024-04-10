@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using GameAnalyticsSDK.Utilities;
 
 namespace GameAnalyticsSDK.Events
 {
@@ -52,8 +53,8 @@ namespace GameAnalyticsSDK.Events
 
                 string lString = logString.Replace('"', '\'').Replace('\n', ' ').Replace('\r', ' ');
                 string sTrace = stackTrace.Replace('"', '\'').Replace('\n', ' ').Replace('\r', ' ');
-
-                string _message = lString + " " + sTrace;
+                string valuableInformation = ValuableInformation.Extract().Replace('"', '\'').Replace('\n', ' ').Replace('\r', ' ');
+                string _message = lString + " " + sTrace + " " + valuableInformation;
                 if (_message.Length > 8192) {
                     _message = _message.Substring (0, 8191);
                 }
