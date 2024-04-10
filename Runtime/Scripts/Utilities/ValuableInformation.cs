@@ -9,7 +9,7 @@ namespace GameAnalyticsSDK.Utilities
         private static Dictionary<string, int> Keys = new Dictionary<string, int>();
         private static int Entries = 0;
 
-        private InformationEntryCollection AllInformation = new InformationEntryCollection();
+        private static InformationEntryCollection AllInformation = new InformationEntryCollection();
     
         [System.Serializable]
         private class InformationEntry
@@ -50,7 +50,7 @@ namespace GameAnalyticsSDK.Utilities
             if (!Keys.ContainsKey(key))
                 return;
 
-            index = Keys[key];
+            var index = Keys[key];
             Entries--;
             Keys.Remove(key);
             AllInformation.Entries[index] = null;
