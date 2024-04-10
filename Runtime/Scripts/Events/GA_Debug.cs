@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using GameAnalyticsSDK;
 using GameAnalyticsSDK.Utilities;
 
 namespace GameAnalyticsSDK.Events
@@ -58,11 +59,11 @@ namespace GameAnalyticsSDK.Events
                     _message = _message.Substring (0, 8191);
                 }
 
-                SubmitError(_message, type, ValuableInformation.Extract());
+                GA_Error.CreateNewEvent(_message, UnityToGAErrorSeverity(type), ValuableInformation.Extract());
             }
         }
 
-        private static void SubmitError(string message, LogType type)
+        private static GAErrorSeverity UnityToGAErrorSeverity(LogType logType)
         {
             GAErrorSeverity severity = GAErrorSeverity.Info;
 
@@ -84,10 +85,9 @@ namespace GameAnalyticsSDK.Events
                 severity = GAErrorSeverity.Warning;
                 break;
             }
-
-            GA_Error.NewEvent(severity, message, null, false);
+            return severity;
         }
-
+        
         /// <summary>
         /// Used only for testing purposes
         /// </summary>
