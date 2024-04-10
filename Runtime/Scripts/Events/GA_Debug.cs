@@ -59,7 +59,7 @@ namespace GameAnalyticsSDK.Events
                     _message = _message.Substring (0, 8191);
                 }
 
-                GA_Error.CreateNewEvent(_message, UnityToGAErrorSeverity(type), ValuableInformation.Extract());
+                GA_Error.NewEvent(_message, UnityToGAErrorSeverity(type), ValuableInformation.Extract());
             }
         }
 
@@ -87,7 +87,7 @@ namespace GameAnalyticsSDK.Events
             }
             return severity;
         }
-        
+
         /// <summary>
         /// Used only for testing purposes
         /// </summary>
